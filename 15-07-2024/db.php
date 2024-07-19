@@ -1,6 +1,6 @@
 <?php
 require_once 'db_connect.php';
-
+$pdo = getPDO();
 function getItemLimit($limit, $offset)
 {
     global $pdo;

@@ -19,7 +19,6 @@
             <td>Name</td>
         </thead>
         <?php foreach ($items as $key => $row) { ?>
-
             <tr>
                 <td><?= $row['ID'] ?></td>
                 <td><?= $row['Name'] ?></td>
