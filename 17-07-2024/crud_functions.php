@@ -105,8 +105,13 @@ function updatePersons($id, $name, $gender, $day)
                 DateOfBirth = :day
             WHERE id = :id";
     $stmt = $pdo->prepare($sql);
-    $stmt->execute(['name' => $name, 'gender' => $gender, 'day' => $day, 'id' => $id]);
-    return $stmt->rowCount();
+    $success = $stmt->execute(['name' => $name, 'gender' => $gender, 'day' => $day, 'id' => $id]);
+    if ($success) {
+        header("Location: question03.php");
+        exit;
+    } else {
+        echo "Error update record";
+    }
 }
 function deletePerson($id)
 {
