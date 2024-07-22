@@ -5,34 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <style>
-        table {
-            width: 100%;
-        }
-
-        th,
-        td {
-            padding: 8px;
-            text-align: left;
-            border-bottom: 1px solid #ddd;
-        }
-
-        .pagination {
-            display: flex;
-            justify-content: center;
-            list-style: none;
-        }
-
-        .pagination li {
-            margin: 5px;
-            padding: 5px;
-            border: 1px solid #ddd;
-        }
-
-        .pagination li.active {
-            font-weight: bold;
-        }
-    </style>
+   
 </head>
 
 <body>

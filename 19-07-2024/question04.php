@@ -6,52 +6,62 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Employee Form</title>
     <style>
-        .error {
-            color: red;
+        table {
+            width: 100%;
+        }
+
+        th,
+        td {
+            padding: 8px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .pagination {
+            display: flex;
+            justify-content: center;
+            list-style: none;
+        }
+
+        .pagination li {
+            margin: 5px;
+            padding: 5px;
+            border: 1px solid #ddd;
+        }
+
+        .pagination li.active {
+            font-weight: bold;
         }
     </style>
 </head>
 
 <body>
-
-
-    <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
-        <h2>Input Employee Information</h2>
-        Employee No: <input type="text" name="employeeNo" id="employeeNo"><br><br>
-        Name: <input type="text" name="name" id="name"><br><br>
-        Place Of Work: <input type="text" name="placeOfWork" id="placeOfWork"><br><br>
-        Phone No: <input type="text" name="phoneNo" id="phoneNo"><br><br>
-        <input type="submit" value="Add New">
-    </form>
-    <br>
-    <a href="list.php">Back To List</a>
-
     <?php
-    $errors = [];
-
-    if ($_SERVER["REQUEST_METHOD"] == "POST") {
-        if (empty($_POST["employeeNo"])) {
-            $errors[] = "You must input employee number";
-        }
-        if (empty($_POST["name"])) {
-            $errors[] = "You must input employee name";
-        }
-        if (empty($_POST["placeOfWork"])) {
-            $errors[] = "You must input place of work";
-        }
-        if (empty($_POST["phoneNo"])) {
-            $errors[] = "You must input phone number";
-        }
-    }
-
-    if (!empty($errors)) {
-        echo '<ul class="error">';
-        foreach ($errors as $error) {
-            echo "<li>$error</li>";
-        }
-        echo '</ul>';
-    }
+    require_once 'crud_functions.php';
+    $employees = readEmployees();
     ?>
+    <table>
+        <thead>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Age</th>
+            <th>Sex</th>
+            <th>Department</th>
+            <th>Operation</th>
+        </thead>
+        <?php foreach ($employees as $employee) { ?>
+            <tr>
+                <td><?= $employee['employee_id'] ?></td>
+                <td><?= $employee['name'] ?></td>
+                <td><?= $employee['age'] ?></td>
+                <td><?= $employee['sex'] ?></td>
+                <td><?= $employee['department'] ?></td>
+                <td><a href="update_employee.php?id=<?php echo $employee['id'];?>">Update</a></td>
+            </tr>
+        <?php } ?>
+    </table>
+    <a href="create_employee.php">Add</a>
+    
 </body>
 
 </html>

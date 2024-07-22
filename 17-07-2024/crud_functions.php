@@ -20,6 +20,7 @@ function createItem($name)
     return $pdo->lastInsertId();
 }
 
+
 // Read function
 function readItems($page_number, $page_size)
 {
