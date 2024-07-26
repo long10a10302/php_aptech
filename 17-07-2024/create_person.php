@@ -9,7 +9,7 @@
 
 <body>
     <?php
-    require_once('crud_functions.php');
+    require_once('crud_functions.php'); 
     $name = isset($_GET['name']) ? $_GET['name'] : '';
     $gender = isset($_GET['gender']) ? $_GET['gender'] : false;
 

@@ -56,7 +56,7 @@
                 <td><?= $employee['age'] ?></td>
                 <td><?= $employee['sex'] ?></td>
                 <td><?= $employee['department'] ?></td>
-                <td><a href="update_employee.php?id=<?php echo $employee['id'];?>">Update</a></td>
+                <td><a href="update_employee.php?id=<?php echo $employee['employee_id'];?>">Update</a></td>
             </tr>
         <?php } ?>
     </table>

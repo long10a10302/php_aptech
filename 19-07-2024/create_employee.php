@@ -22,7 +22,6 @@
         }else{
             echo 'Tao nhan vien that bai';
         }
-           
     }
     ?>
     <form action="" method="post">

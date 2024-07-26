@@ -33,7 +33,7 @@
         echo 'Cap nhat that bai';
     }
     ?>
-    <form action="" method="post">
+    <form action="" method="post">  
         <input type="hidden" name="id" value="<?= $employee['id'] ?>">
         <label for="name">Name:</label>
         <input type="text" id="name" name="name" value="<?= $employee['name'] ?>">
