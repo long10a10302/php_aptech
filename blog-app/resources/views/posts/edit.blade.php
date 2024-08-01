@@ -34,7 +34,7 @@
                         </div>
                         <div class="form-group mb-3">
                             <label for="">Noi dung</label>
-                            <input type="text" name="body" id="" class="form-control" value="{{ $post->body }}">
+                            <input type="text" name="body" id="" class="form-control" value="{{ $post->content }}">
                         </div> 
                         <div class="form-group mb-3">
                             <button type="submit" class="btn btn-primary">Cập nhật bài viết</button>

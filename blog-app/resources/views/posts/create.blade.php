@@ -34,6 +34,12 @@
                             <input type="text" name="body" id="" class="form-control">
                         </div> 
                         <div class="form-group mb-3">
+                            <input type="hidden" name="user_id" id="" class="form-control" value="{{ session('user_id') }}">
+                        </div> 
+                    </div>
+                        
+                    </div>
+                        <div class="form-group mb-3">
                             <button type="submit" class="btn btn-primary">Lưu bài viết</button>
                         </div>
                     </form>

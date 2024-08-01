@@ -9,7 +9,6 @@ if (!$pdo) {
     // You can perform database operations here
     echo '<p style="color: red;">Connection to db failed</p>';
 }
-
 function readEmployees(){
     global $pdo;
     $sql = "SELECT employee.id AS employee_id, employee.name, employee.dept_id, employee.age, employee.sex, department.name AS department

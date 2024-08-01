@@ -20,11 +20,13 @@
             <ul class="navbar-nav">
                 <li class="nav-item active">
                     <a class="nav-link" href="{{ route('post.all') }}">Post</a>
-                </li>
+                </li>               
                 <li class="nav-item active">
-                    <a class="nav-link" href="{{ route('user.register') }}">Đăng ký</a>
-                </li>
-                
+                    <a class="nav-link" href="{{ route('registerxx') }}">Đăng ký</a>
+                </li>  
+                <li class="nav-item active">
+                    <a class="nav-link" href="{{ route('user.showLogin') }}">Đăng nhập</a>
+                </li>  
             </ul>
         </div>
     </nav>

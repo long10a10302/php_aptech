@@ -14,7 +14,7 @@
                 <h5 class="alert alert-success">{{ session('status') }}</h5>
             @endif
             <h2 class="text-center mt-5">Register</h2>
-            <form action="{{ url('/register') }}" method="POST" class="mt-4">
+            <form action="{{ route('user.store')}}" method="POST" class="mt-4">
                 @csrf
                 <div class="mb-3">
                     <label for="name" class="form-label">Name</label>
@@ -44,6 +44,7 @@
                         <span class="text-danger">{{ $errors->first('password_confirmation') }}</span>
                     @endif
                 </div>
+            
                 <button type="submit" class="btn btn-primary w-100">Register</button>
             </form>
             

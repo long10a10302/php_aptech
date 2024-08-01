@@ -15,6 +15,7 @@
     <div class="container">
         <div class="row">
             <div class="col-md-12">
+                @csrf
                 @if (session('status'))
                     <h5 class="alert alert-success">{{ session('status') }}</h5>
                 @endif
@@ -41,7 +42,7 @@
                             @foreach ($posts as $post)
                                 <tr>
                                     <td>{{ $post->title }}</td>
-                                    <td>{{ $post->body }}</td>
+                                    <td>{{ $post->content }}</td>
                                     <td>{{ $post ->user_id }}</td>
                                     <td>{{ $post->created_at }}</td>
                                     <td>{{ $post->updated_at }}</td>

@@ -10,7 +10,7 @@ class PostController extends Controller
 {
     public function index()
     {
-        $posts = Post::all();
+        $posts = Post::all();        
         return view("posts.index",[
             'posts' => $posts
         ]);
@@ -22,7 +22,8 @@ class PostController extends Controller
     public function store(Request $request){
         $post = new Post;
         $post->title = $request->input('title');
-        $post -> body = $request->input('body');
+        $post ->content = $request->input('body');
+        $post ->user_id = $request->input('user_id');
         $post->save();
         return redirect()->route('post.all')->with('status','Them bai viet thanh cong');
     }
@@ -32,10 +33,11 @@ class PostController extends Controller
         return view('posts.edit',compact('post'));
     }
 
+    
     public function update(Request $request,$id){
         $post = Post::find($id);
         $post->title = $request->input('title');
-        $post -> body = $request->input('body');
+        $post -> content = $request->input('body');
         $post->update();
         return redirect()->route('post.all')->with('status','Cap nhat bai viet thanh cong');
     }
