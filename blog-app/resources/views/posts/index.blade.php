@@ -32,7 +32,7 @@
                             <tr>
                                 <th>Title</th>
                                 <th>Content</th>
-                                <th>User_id</th>
+                                <th>Tên người tạo bài viết</th>
                                 <th>Created at</th>
                                 <th>Updated at</th>
                                 <th>Action</th>
@@ -43,7 +43,7 @@
                                 <tr>
                                     <td>{{ $post->title }}</td>
                                     <td>{{ $post->content }}</td>
-                                    <td>{{ $post ->user_id }}</td>
+                                    <td>{{ $post ->user->name}}</td>
                                     <td>{{ $post->created_at }}</td>
                                     <td>{{ $post->updated_at }}</td>
                                     <td>

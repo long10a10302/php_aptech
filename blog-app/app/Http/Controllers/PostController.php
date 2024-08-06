@@ -9,12 +9,12 @@ use App\Models\Post;
 class PostController extends Controller
 {
     public function index()
-    {
-        $posts = Post::all();        
-        return view("posts.index",[
-            'posts' => $posts
-        ]);
-    }
+{
+    $posts = Post::with('user')->get();
+        return view("posts.index", [
+        'posts' => $posts
+    ]);
+}
 
     public function add(){
        return view("posts.create");
