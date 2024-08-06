@@ -10,6 +10,40 @@
 </head>
 
 <body>
+    <?php
+    require_once 'function.php';
+    $usernameError = $passwordError = $confirmPasswordError = $phoneError = "";
+    
+    if ($_SERVER["REQUEST_METHOD"] == "POST") {
+        
+        if (empty($_POST["username"])) {
+            $usernameError = "Vui lòng nhập tên đăng nhập.";
+        }else{
+            $username = $_POST['username'];
+            $phone = $_POST['phone'];
+            $user = readUser($username);
+            if($user){
+                if($user['phone'] == $phone){
+                    $characters = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*()_+';
+                    $passwordLength = 6;
+                    $password = '';
+                    for ($i = 0; $i < $passwordLength; $i++) {
+                        $password .= $characters[random_int(0, strlen($characters) - 1)];
+                    }
+                    $password_hash = password_hash($password,PASSWORD_DEFAULT);
+                    if(updateUser($username,$password_hash)){
+                        echo 'Cập nhật mật khẩu thành công';
+                    };   
+                }else{
+                    $phoneError = 'Số điện thoại không đúng vui lòng nhập lại';
+                }
+            }else{
+                $usernameError = 'Tên đăng nhập không tồn tại vui lòng nhập lại';
+            }
+        }
+    }
+  
+    ?>
     <div class="container mt-5">
         <div class="row justify-content-center">
             <div class="col-md-6">

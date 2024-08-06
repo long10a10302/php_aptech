@@ -18,11 +18,11 @@
         $username = $_POST['username'];
         $password = $_POST['password'];
 
-        
+
         if (empty($username)) {
             $usernameError = "Vui lòng nhập tên đăng nhập.";
         } else {
-            $user =readUser($username);
+            $user = readUser($username);
             if ($user) {
                 if (password_verify($password, $user['password_hash'])) {
                     header('Location: home.php');
@@ -63,6 +63,7 @@
                             </div>
                             <div class="mb-3">
                                 <a href="login_forgot.php" class="float-right">Forgot password?</a>
+                                <a href="change_password.php" class="float-right mr-2">Change password</a>
                             </div>
                             <button type="submit" class="btn btn-primary">Login</button>
                         </form>
