@@ -9,7 +9,7 @@ CREATE TABLE users(
     phone INT NOT NULL UNIQUE
 );
 
-INSERT INTO users (username, password, phone)
+INSERT INTO users (username,password_hash , phone)
 VALUES
   ('johndoe', 'password123', '0987654321'),
   ('janedoe', 'secure_password', '0123456789'),
