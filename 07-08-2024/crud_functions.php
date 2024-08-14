@@ -11,56 +11,45 @@ if (!$pdo) {
 }
 function readEmployees(){
     global $pdo;
-    $sql = "SELECT employee.id AS employee_id, employee.name, employee.dept_id, employee.age, employee.sex, department.name AS department
-            FROM employee 
-            INNER JOIN department ON employee.dept_id = department.id";
+    $sql = "SELECT * FROM employees";
     $stmt = $pdo->query($sql);
     return $stmt->fetchAll(PDO::FETCH_ASSOC);
 }
 
-function readDepartment(){
-    global $pdo;
-    $sql = "SELECT * FROM Department";
-    $stmt = $pdo->query($sql);
-    return $stmt->fetchAll(PDO::FETCH_ASSOC);
-}
 
-function getEmployeeById($id){
+function createEmployee($data) {
     global $pdo;
-    $sql = "SELECT * FROM Employee WHERE id = :id";
+    $sql = "INSERT INTO employees (first_name, last_name, salary) VALUES (?, ?, ?)";
     $stmt = $pdo->prepare($sql);
-    $stmt->bindParam(':id', $id, PDO::PARAM_INT);
-    $stmt->execute();
-    $employee = $stmt->fetch(PDO::FETCH_ASSOC);
-    return $employee;
-}
-function createEmployee($name,$age,$sex,$dept_id){
-    global $pdo;
-    $sql = "INSERT INTO employee (name,age,sex,dept_id) VALUES (:name,:age,:sex,:dept_id) ";
-    $stmt = $pdo->prepare($sql);
-    $stmt ->execute(['name'=> $name, 'age' => $age, 'sex' => $sex,'dept_id' => $dept_id]);
+    $stmt->execute($data);
     return $pdo->lastInsertId();
-
 }
-function updateEmployee($id, $name, $age, $sex, $dept_id)
-{
+
+function updateEmployee($data) {
     global $pdo; // Giả sử bạn đã kết nối với database và lưu kết nối vào biến $pdo
 
-    $sql = "UPDATE employee
-            SET name = :name,
-                age = :age,
-                sex = :sex,
-                dept_id = :dept_id
-            WHERE id = :id";
+    $sql = "UPDATE employees
+            SET salary = ?
+            WHERE last_name = ?";
 
     $stmt = $pdo->prepare($sql);
-    $stmt->execute([
-        'name' => $name,
-        'age' => $age,
-        'sex' => $sex,
-        'dept_id' => $dept_id,
-        'id' => $id
-    ]);
+    $stmt->execute($data);
 
     return $stmt->rowCount();
+}
+
+function deleteEmployee($data) {
+    global $pdo; // Giả sử bạn đã kết nối với database và lưu kết nối vào biến $pdo
+
+    $sql = "DELETE FROM employees 
+            WHERE last_name = ?";
+
+    $stmt = $pdo->prepare($sql);
+    $result = $stmt->execute([$data]);
+
+    if ($result) {
+        return $stmt->rowCount();
+    } else {
+        return false;
+    }
 }
